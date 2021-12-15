@@ -1,0 +1,75 @@
+server:
+  port: 8585
+  servlet:
+    context-path: /boot
+
+spring:
+
+  mail:
+    # enterprise mail :smtp.exmail.qq.com
+    host: smtp.qq.com
+    # tencent mail port
+    port: 465
+    username: xxxxx@qq.com
+    # QQ Mail config provide
+    password: xxxxx
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+
+  profiles:
+    active: @profiles.active@
+
+  datasource:
+    # dynamic database
+    dynamic:
+      primary: db1
+      datasource:
+        db1:
+          url: jdbc:mysql://xxx.xx.xxx.xx:3306/xxx?characterEncoding=utf8&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: xxx
+          password: xxxx
+
+        db2:
+          url: jdbc:mysql://xxx.xx.xxx.xx:3306/xxxx?characterEncoding=utf8&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: xxx
+          password: xxxx
+  mvc:
+    view:
+      suffix: .html
+      prefix: /
+
+# config swagger scan package path
+swagger:
+  basePackage: com.qiuhuanhen.springroot.interfaces
+
+# windows下 除了rocketmq_home 还要配置NAMESRV_ADDR : localhost:9876环境变量
+# 否则手动创建topic仍无法获取路由
+rocketmq:
+  consumer:
+    isOnOff: on
+    # 集群部署  如果不需要只保留一个地址即可
+    namesrvAddr: xxx.xx.xx.xxx:9876;xxx.xx.xx.xx:9876
+    groupName: windowsSpringboot
+    topics: order~*;test~*
+    consumeThreadMin: 20
+    consumeThreadMax: 64
+    consumeMessageBatchMaxSize: 1
+    consumeMode:
+      # 1:order 0: concurrent (default 1)
+      enableOrder: 1
+
+  producer:
+    isOnOff: on
+    groupName: windowsSpringboot
+    namesrvAddr: xxx.xx.xx.xxx:9876;xxx.xx.xx.xx:9876
+    maxMessageSize: 4096
+    sendmsgTimeout: 3000
+    retryTimesWhenSendFailed: 2
+
+
