@@ -1,5 +1,7 @@
 
 # 提示： 代码是前两年写的了 也不打算更新该项目了  各位可以移步csdn找我 csdn博客长期都有在更新 欢迎交流技术
+# csdn: 孟秋与你 地址： https://blog.csdn.net/qq_36268103?type=blog
+
 
 # springboot-DDD
 springboot综合项目, DDD四层架构 springboot整合rocketmq、aop切面、定时器、事务、线程池、发送邮件、并发安全问题、全局异常处理、websocket、动态数据库、maven聚合工程及正确打包方式、spring基础知识等，是一个较为综合的demo 可用于脚手架开发 
